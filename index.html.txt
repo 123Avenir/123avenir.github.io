@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avenir Group - Aviation Services</title>
+    <style>
+        /* 简单样式，让网站好看点 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* 头部导航 */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 30px;
+            font-size: 16px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        /* 每个板块样式 */
+        section {
+            padding: 60px 0;
+        }
+        section h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        .intro-content, .advantages-content, .contact-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        /* 优势列表 */
+        .advantages-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .advantages-list li {
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+        /* 联系方式 */
+        .contact-info {
+            font-size: 18px;
+            text-align: center;
+            line-height: 2;
+        }
+        /* 底部 */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container">
+            <div class="logo">Avenir Group</div>
+            <nav>
+                <a href="#about">公司介绍</a>
+                <a href="#advantages">优势介绍</a>
+                <a href="#contact">联系方式</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 公司介绍板块 -->
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="intro-content">
+                <p>Avenir Group, a Hong Kong-based aviation services provider dedicated to delivering comprehensive, high-quality solutions for the global aviation industry.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 优势介绍板块（已更新你的3个优势） -->
+    <section id="advantages">
+        <div class="container">
+            <h2>Our Advantages</h2>
+            <div class="advantages-content">
+                <ul class="advantages-list">
+                    <li>Strong procurement ability</li>
+                    <li>Professional repair management</li>
+                    <li>Advanced equipment R&D</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式板块（已更新你的信息） -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p>Email: Company@avenirhk.com</p>
+                    <p>Phone: +852 5274 1660</p>
+                    <p>Address: Hong Kong, China</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Avenir Group. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
