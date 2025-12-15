@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avenir Group - Global Aviation Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* 头部导航 */
+        header {
+            background-color: #1a237e;
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #bbdefb;
+        }
+        /* 英雄区 */
+        .hero {
+            background-color: #e3f2fd;
+            padding: 60px 0;
+            text-align: center;
+            color: #1a237e;
+        }
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            font-size: 16px;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        /* 通用板块样式 */
+        section {
+            padding: 60px 0;
+        }
+        .section-title {
+            font-size: 28px;
+            color: #1a237e;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 3px;
+            background-color: #2196f3;
+            margin: 12px auto;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+        /* 公司介绍 */
+        .about-content {
+            font-size: 16px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        /* 服务板块 */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        .service-title {
+            font-size: 20px;
+            color: #1a237e;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .service-desc {
+            font-size: 15px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        /* 表格样式（关键优化：可滚动） */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 4px;
+            border: 1px solid #eee;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        th, td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background-color: #f5f7fa;
+            color: #1a237e;
+            font-weight: bold;
+            font-size: 13px;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        .table-note {
+            font-size: 12px;
+            color: #666;
+            margin-top: -15px;
+            margin-bottom: 20px;
+        }
+        /* 子标题 */
+        .sub-title {
+            font-size: 16px;
+            color: #1a237e;
+            margin: 25px 0 12px 0;
+        }
+        /* 列表样式（去掉图标后调整缩进） */
+        .custom-list {
+            list-style: none;
+            padding-left: 20px; /* 去掉图标后增加缩进，保持排版整齐 */
+            font-size: 15px;
+            color: #555;
+        }
+        .custom-list li {
+            margin-bottom: 8px;
+        }
+        /* 联系方式 */
+        .contact-info {
+            text-align: center;
+            font-size: 16px;
+        }
+        .contact-item {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+        }
+        .contact-item span {
+            /* 去掉图标后直接显示文字，居中对齐 */
+            text-align: center;
+        }
+        /* 底部 */
+        footer {
+            background-color: #1a237e;
+            color: white;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+        /* 响应式优化 */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav a {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            .hero h1 {
+                font-size: 28px;
+            }
+            .card {
+                padding: 20px;
+            }
+            .contact-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Avenir Group</div>
+            <nav>
+                <a href="#home">HOME</a>
+                <a href="#about">ABOUT</a>
+                <a href="#services">SERVICE</a>
+                <a href="#contact">CONTACT</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 英雄区 -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Global Aviation Services Provider</h1>
+            <p>Dedicated to delivering comprehensive, high-quality solutions for the global aviation industry</p>
+        </div>
+    </section>
+
+    <!-- 公司介绍 -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="card about-content">
+                <p>Avenir Group, a Hong Kong-based aviation services provider dedicated to delivering comprehensive, high-quality solutions for the global aviation industry.</p>
+                <p style="margin-top: 15px;">With extensive experience in airlines, MRO, aviation materials and AOG support, we keep your aircraft safely flying!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心服务（已删除 Other Services 板块） -->
+    <section id="services" style="background-color: #fafafa;">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <!-- 采购支持 -->
+                <div class="card">
+                    <h3 class="service-title">Procurement Support</h3>
+                    <p class="service-desc">We partner with leading OEMs (Airbus, Boeing) and extensive suppliers across China, providing efficient sourcing and delivery of engine components, HMUs and specialized aviation materials.</p>
+                    
+                    <h4 class="sub-title">Product Examples</h4>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>PN</th>
+                                    <th>DES</th>
+                                    <th>QTY</th>
+                                    <th>PRICE EACH(CNY)</th>
+                                    <th>Lead Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>AG822000-08</td>
+                                    <td>GASKET, ANTENNA, TCA</td>
+                                    <td>2019</td>
+                                    <td>8,625</td>
+                                    <td>10 days</td>
+                                </tr>
+                                <tr>
+                                    <td>622-8973-001</td>
+                                    <td>ANTENNA, TCAS</td>
+                                    <td>1</td>
+                                    <td>273,991</td>
+                                    <td>11 days</td>
+                                </tr>
+                                <tr>
+                                    <td>SH670-70101-1</td>
+                                    <td>PLATE</td>
+                                    <td>1</td>
+                                    <td>22,190</td>
+                                    <td>11 days</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="table-note">Trade mode: EXW | Payment terms: Prepayment | Location: Hong Kong</p>
+                    
+                    <h4 class="sub-title">Engine Details</h4>
+                    <ul class="custom-list">
+                        <li>Manufacturer: Pratt & Whitney Canada Corp</li>
+                        <li>Type/Model Series: PW307A</li>
+                        <li>Serial Number: PCE</li>
+                    </ul>
+                </div>
+
+                <!-- 维修管理 -->
+                <div class="card">
+                    <h3 class="service-title">Repair Management</h3>
+                    <p class="service-desc">We offer repair management via CAAC-certified MRO partners in China, servicing B737, A320 and other aircraft models for landing gears, HMUs, servovalves and more.</p>
+                    
+                    <h4 class="sub-title">Repairable Components</h4>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>PN</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>5</td><td>3108404-01</td><td>SERVOVALE</td></tr>
+                                <tr><td>6</td><td>441-40470-001</td><td>AIR CONDITION Control Panel Assembly</td></tr>
+                                <tr><td>7</td><td>441-40472-002</td><td>Cabin Pressure Control Panel Assembly (CPA)</td></tr>
+                                <tr><td>8</td><td>441-40472-001</td><td>Cabin Pressure Control Panel Assembly (CPA)</td></tr>
+                                <tr><td>9</td><td>441-45448-001</td><td>Cabin Pressure Control Panel Assembly (CPA)</td></tr>
+                                <tr><td>10</td><td>7053A010001</td><td>TEMPERATURE CONTROL VALVE</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4 class="sub-title">Landing Gear Repair (B737)</h4>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>PN Series</th>
+                                    <th>Component Name</th>
+                                    <th>Manufacturer</th>
+                                    <th>Services</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>55</td>
+                                    <td>162A1100, 275A1100, 275A5300, 284A0101, 284A0301, 287A6205, 654A0012-37</td>
+                                    <td>Nose Landing Gear Assembly</td>
+                                    <td>BOEING</td>
+                                    <td>Inspection, Repair, Overhaul, Modification</td>
+                                </tr>
+                                <tr>
+                                    <td>56</td>
+                                    <td>162A1110 SERIES</td>
+                                    <td>Nose Landing Gear Outer Cylinder Assembly</td>
+                                    <td>BOEING</td>
+                                    <td>Inspection, Repair, Overhaul, Modification</td>
+                                </tr>
+                                <tr>
+                                    <td>57</td>
+                                    <td>162A1120 SERIES</td>
+                                    <td>Nose Landing Gear Inner Cylinder Assembly</td>
+                                    <td>BOEING</td>
+                                    <td>Inspection, Repair, Overhaul, Modification</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 设备研发 -->
+                <div class="card">
+                    <h3 class="service-title">Equipment R&D</h3>
+                    <p class="service-desc">We collaborate with trusted suppliers to design and manufacture advanced test benches and systems, including hydraulic, pneumatic, fuel, lubrication equipment, HMU and electronic testing solutions.</p>
+                    <p style="font-size: 15px; color: #555;">Customized testing equipment solutions available for your operational needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="card">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>RM D07, 8/F KAI TAK FTY BLDG NO. 99 KING FUK ST, SAN PO KONG, HONG KONG</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>Company@avenirhk.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>+852 5274 1660</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>+852 5274 1660 (Telegram/WhatsApp)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Avenir Group. All rights reserved.</p>
+            <p style="margin-top: 8px; font-size: 13px;">Global Aviation Services Provider | Hong Kong</p>
+        </div>
+    </footer>
+
+    <!-- 平滑滚动 -->
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
