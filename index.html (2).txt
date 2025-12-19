@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avenir Group - Global Aviation Services</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+        }
+        body {
+            background-color: #ffffff; /* 主底色白色 */
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* 顶部联系方式栏（精简版） */
+        .top-bar {
+            background-color: #1a237e; /* 深蓝色顶部栏 */
+            color: white;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+        .top-bar-content {
+            display: flex;
+            justify-content: flex-start; /* 仅靠左显示邮箱+电话 */
+            align-items: center;
+            gap: 30px; /* 邮箱和电话间距 */
+        }
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s;
+        }
+        .contact-link:hover {
+            color: #bbdefb; /* 浅蓝 hover 色 */
+        }
+        /* 头部导航 */
+        header {
+            background-color: white; /* 导航栏白色底色 */
+            color: #1a237e; /* 导航文字深蓝色 */
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 浅阴影增强层次 */
+            border-bottom: 1px solid #f0f5ff; /* 浅蓝色边框分隔 */
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #1a237e; /* logo 深蓝色 */
+        }
+        nav a {
+            color: #1a237e;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover, nav a.active {
+            color: #2196f3; /* 导航 hover 天蓝色 */
+        }
+        /* 英雄区 */
+        .hero {
+            background-color: #e3f2fd; /* 天蓝色背景 */
+            padding: 70px 0;
+            text-align: center;
+            color: #1a237e;
+            margin-bottom: 60px;
+        }
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 17px;
+            max-width: 750px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        /* 通用板块样式 */
+        section {
+            padding: 60px 0;
+        }
+        .section-title {
+            font-size: 28px;
+            color: #1a237e;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            font-weight: 700;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 3px;
+            background-color: #2196f3; /* 天蓝色下划线 */
+            margin: 12px auto;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+            padding: 35px;
+            margin-bottom: 30px;
+            transition: box-shadow 0.3s, transform 0.2s;
+            border-top: 3px solid #2196f3; /* 天蓝色顶部边框 */
+        }
+        .card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+        /* 公司介绍 */
+        .about-content {
+            font-size: 16px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #444;
+        }
+        /* 服务板块 */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        .service-title {
+            font-size: 22px;
+            color: #1a237e;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .service-title i {
+            color: #2196f3; /* 服务标题图标天蓝色 */
+            font-size: 24px;
+        }
+        .service-desc {
+            font-size: 15px;
+            margin-bottom: 25px;
+            color: #555;
+            line-height: 1.7;
+        }
+        /* 联系方式（重新布局，移除地图框） */
+        .contact-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .contact-info {
+            font-size: 16px;
+            color: #444;
+            width: 100%;
+            max-width: 600px;
+        }
+        .contact-info h3 {
+            font-size: 22px;
+            color: #1a237e;
+            margin-bottom: 25px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .contact-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .contact-item i {
+            color: #2196f3; /* 联系方式图标天蓝色 */
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+            margin-top: 2px;
+        }
+        .contact-item-text {
+            line-height: 1.6;
+        }
+        .contact-item-text strong {
+            color: #1a237e;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+        .contact-item-text a {
+            color: #2196f3;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .contact-item-text a:hover {
+            color: #1a237e;
+        }
+        /* 底部 */
+        footer {
+            background-color: #1a237e;
+            color: white;
+            text-align: center;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+            font-size: 14px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 20px 0;
+        }
+        .footer-link {
+            color: #bbdefb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-link:hover {
+            color: #2196f3;
+        }
+        .copyright {
+            margin-top: 20px;
+            color: #e0e0ff;
+            font-size: 13px;
+        }
+        /* 回到顶部按钮 */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #2196f3;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 99;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: background 0.3s;
+        }
+        #backToTop:hover {
+            background: #1a237e;
+        }
+        /* 响应式优化 */
+        @media (max-width: 768px) {
+            .top-bar-content {
+                justify-content: center;
+                gap: 20px;
+            }
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav a {
+                margin-left: 12px;
+                margin-right: 12px;
+            }
+            .hero h1 {
+                font-size: 28px;
+            }
+            .hero p {
+                font-size: 15px;
+            }
+            .card {
+                padding: 25px;
+            }
+            .service-title {
+                font-size: 20px;
+            }
+            .contact-info h3 {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部联系方式栏（精简版） -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <a href="mailto:Company@avenirhk.com" class="contact-link">
+                <i class="bi bi-envelope-fill"></i>
+                <span>Company@avenirhk.com</span>
+            </a>
+            <a href="tel:+85252741660" class="contact-link">
+                <i class="bi bi-telephone-fill"></i>
+                <span>+852 5274 1660</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 头部导航 -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Avenir Group</div>
+            <nav>
+                <a href="#home" class="active">HOME</a>
+                <a href="#about">ABOUT</a>
+                <a href="#services">SERVICE</a>
+                <a href="#contact">CONTACT</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 英雄区 -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Global Aviation Services Provider</h1>
+            <p>Dedicated to delivering comprehensive, high-quality solutions for the global aviation industry — keeping your aircraft safely flying with professional support.</p>
+        </div>
+    </section>
+
+    <!-- 公司介绍 -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="card about-content">
+                <p>Avenir Group, a Hong Kong-based aviation services provider dedicated to delivering comprehensive, high-quality solutions for the global aviation industry.</p>
+                <p style="margin-top: 20px; font-size: 17px; color: #1a237e; font-weight: 500;">With extensive experience in airlines, MRO, aviation materials and AOG support, we keep your aircraft <span style="color: #2196f3;">safely flying!</span></p>
+                <p style="margin-top: 20px;">Our team combines deep industry knowledge with global resource networks to provide reliable, efficient services tailored to your unique operational needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心服务 -->
+    <section id="services" style="background-color: #fafdff;">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <!-- 采购支持 -->
+                <div class="card">
+                    <h3 class="service-title"><i class="bi bi-truck-fast"></i> Procurement Support</h3>
+                    <p class="service-desc">We partner with leading OEMs (Airbus, Boeing) and extensive suppliers across China, providing efficient sourcing and delivery of engine components, HMUs and specialized aviation materials. Our procurement solutions ensure timely availability of critical parts with strict quality control.</p>
+                </div>
+
+                <!-- 维修管理 -->
+                <div class="card">
+                    <h3 class="service-title">Repair Management</h3>
+                    <p class="service-desc">We offer repair management via CAAC-certified MRO partners in China, servicing B737, A320 and other aircraft models for landing gears, HMUs, servovalves and more. Our streamlined process ensures fast turnaround times without compromising on quality standards.</p>
+                </div>
+
+                <!-- 设备研发 -->
+                <div class="card">
+                    <h3 class="service-title"><i class="bi bi-flask"></i> Equipment R&D</h3>
+                    <p class="service-desc">We collaborate with trusted suppliers to design and manufacture advanced test benches and systems, including hydraulic, pneumatic, fuel, lubrication equipment, HMU and electronic testing solutions. Our R&D team works closely with clients to develop customized equipment that meets specific operational requirements.</p>
+                    <p style="font-size: 15px; color: #555; margin-top: 15px;">From concept design to prototype testing and mass production, we provide end-to-end R&D support to enhance your operational efficiency and reliability.</p>
+                </div>
+
+                <!-- Consulting & Others -->
+                <div class="card">
+                    <h3 class="service-title">Consulting & Others</h3>
+                    <p class="service-desc">Avenir Group also provides specialized aviation consulting services, leveraging our industry expertise across MRO, airline, and the broader Greater China market. We serve as a strategic gateway for foreign companies seeking to enter or expand in China, offering support in areas such as joint venture or MRO establishment, CAAC/CAMAC certification, and engagement with major and regional airlines. Concurrently, we assist Chinese aviation firms in their global expansion efforts, facilitating their growth into international markets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="card">
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <div class="contact-item">
+                            <i class="bi bi-geo-alt-fill"></i> <!-- 新增地址专属图标 -->
+                            <div class="contact-item-text">
+                                <strong>Address</strong>
+                                RM D07, 8/F KAI TAK FTY BLDG NO. 99 KING FUK ST, SAN PO KONG, HONG KONG
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="bi bi-envelope-fill"></i>
+                            <div class="contact-item-text">
+                                <strong>Email</strong>
+                                <a href="mailto:Company@avenirhk.com">Company@avenirhk.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="bi bi-telephone-fill"></i>
+                            <div class="contact-item-text">
+                                <strong>Phone</strong>
+                                <a href="tel:+85252741660">+852 5274 1660</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="bi bi-whatsapp"></i>
+                            <div class="contact-item-text">
+                                <strong>Instant Message</strong>
+                                <a href="https://wa.me/85252741660" target="_blank">+852 5274 1660 (Telegram/WhatsApp)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部（导航栏仅保留和顶部一致的选项） -->
+    <footer>
+        <div class="container">
+            <div class="logo" style="color: white; margin-bottom: 20px;">Avenir Group</div>
+            <div class="footer-links">
+                <a href="#home" class="footer-link">HOME</a>
+                <a href="#about" class="footer-link">ABOUT</a>
+                <a href="#services" class="footer-link">SERVICE</a>
+                <a href="#contact" class="footer-link">CONTACT</a>
+            </div>
+            <p class="copyright">&copy; <span id="copyrightYear"></span> Avenir Group. All rights reserved.</p>
+            <p style="margin-top: 8px; font-size: 13px; color: #e0e0ff;">Global Aviation Services Provider | Hong Kong</p>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- 脚本 -->
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('nav a, .footer-link').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 导航高亮
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionHeight = section.offsetHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            // 顶部导航高亮
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            // 回到顶部按钮显示/隐藏
+            const backToTopBtn = document.getElementById('backToTop');
+            if (window.scrollY > 500) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+
+        // 回到顶部功能
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // 版权年份自动更新
+        document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
